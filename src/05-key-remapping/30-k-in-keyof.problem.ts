@@ -1,12 +1,14 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-interface Attributes {
+interface Attr {
   firstName: string;
   lastName: string;
   age: number;
 }
 
-type AttributeGetters = unknown;
+type AttributeGetters = {
+  [K in keyof Attr]: () => Attr[K];
+};
 
 type tests = [
   Expect<
